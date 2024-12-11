@@ -9,10 +9,10 @@ aws s3api create-bucket --bucket $BUCKET_OUTPUT --region us-east-1
 # Lambda-Bereitstellung
 aws lambda create-function \
     --function-name CsvToJson \
-    --runtime dotnet8 \
+    --runtime python3.8 \
     --role arn:aws:iam::123456789012:role/lambda-role \
     --handler lambda_function.lambda_handler \
-    --code S3Bucket=Bucket_Input,S3Key=lambda.zip \
+    --code S3Bucket=my-deployment-bucket,S3Key=lambda.zip \
     --timeout 15
 
 # Ereignisquelle hinzufügen
